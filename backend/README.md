@@ -1,1 +1,0 @@
-strongbee-dashboard-backend

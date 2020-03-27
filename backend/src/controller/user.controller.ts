@@ -7,14 +7,17 @@ export class UserController extends DatabaseController {
 
     private repo: UserRepository;
 
-    constructor(){
+    constructor(userRepository = new UserRepository()){
         super();
-        this.repo = new UserRepository();
+        this.repo = userRepository;
     }
 
     login(req: Request, res:Response, next: Next){
         let data = req.body
-        this.repo.login(data.username, data.password).then((response)=>{
+
+        this.repo.login(data.email, data.password).then((response)=>{
+            
+            
             if (response.length <= 0){
                 this.unauthorizedError(res, 'User Not Found')
             } else {

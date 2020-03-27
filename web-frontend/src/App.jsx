@@ -23,7 +23,8 @@ function App() {
 }
 
 const ProtectedRoute = ({component: Component, ...rest}) => {
-  const {isAuth, token} = useSelector(getAuth);
+  const {isAuth} = useSelector(getAuth);
+  console.log(isAuth);
   
   return !isAuth ? <Redirect to="/login" noThrow/> : <Component {...rest} />;
 }

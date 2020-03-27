@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
 import { useNavigate } from '@reach/router';
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { doRegister, getRegister } from './registerSlice';
+import { useEffect } from 'react';
+import * as _ from 'lodash';
 
 const Register = () => {
 
     const navigate = useNavigate();
     const {register, handleSubmit,  errors, watch } = useForm()
-
+    const dispatcher = useDispatch();
+    const {isRegistered} = useSelector(getRegister)
   
 
-    const doLogin = data => {
-        console.log(data)
-        
+    useEffect(()=>{
+        if (isRegistered){
+            navigate('/login');
+        }
+    }, [isRegistered]);
+
+    const onRegister = data => {
+        data = {email: data.username, password: data.password}
+        dispatcher(doRegister(data));
     }
-    console.log(errors);
+
+    
     
     return (
         <div className="container-fluid">
@@ -22,7 +34,7 @@ const Register = () => {
                 <div>
                     <h3>Register</h3>
                 </div>
-                <form onSubmit={handleSubmit(doLogin)}>
+                <form onSubmit={handleSubmit(onRegister)}>
                     <div className="form-group col-3 mx-auto">
                        
                         <input type="text" name="username" placeholder="Username" className="form-control" 

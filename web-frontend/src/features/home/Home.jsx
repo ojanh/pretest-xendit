@@ -1,17 +1,33 @@
 import React, { useState } from 'react';
 import { useNavigate } from '@reach/router';
-import {useForm} from 'react-hook-form'
+import {useForm} from 'react-hook-form';
+import {setAuth, getAuth} from '../../app/authSlice';
+import { doLogin } from './homeSlice';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const Home = () => {
     const navigate = useNavigate();
     const {register, handleSubmit,  errors } = useForm()
+    const dispatcher = useDispatch();
 
-    const doLogin = data => {
+    const {isAuth} = useSelector(getAuth);
+
+    const loginFunc = data => {
         console.log(data);
-       
         
+        dispatcher(doLogin(data.username, data.password));
     }
-     console.log(errors);
+
+    useEffect(()=>{
+       if (isAuth){
+           console.log(isAuth);
+           
+           navigate('/');
+       } 
+    }, [isAuth]);
+   
     return (
     <div className="container-fluid">
         <div className="row d-flex justify-content-center align-content-center" style={{marginTop: "15%"}}>
@@ -19,7 +35,7 @@ const Home = () => {
                 <div>
                     <h3>Login</h3>
                 </div>
-                <form onSubmit={handleSubmit(doLogin)}>
+                <form onSubmit={handleSubmit(loginFunc)}>
                     <div className="form-group col-3 mx-auto">
                         <div className="row">
                             <input type="text" name="username" placeholder="Username" className="form-control" 

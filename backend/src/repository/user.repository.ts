@@ -5,13 +5,13 @@ export default class UserRepository {
     
     private knex: ReturnType<typeof getKnex>;
     
-    constructor(){
-       this.knex = getKnex();
+    constructor(knex = getKnex()){
+       this.knex = knex;
     }
 
     login(username, password) {
         return this.knex('users').select('email').where('email', username)
-            .andWhereRaw('password=sha256(?)',[password])
+            .andWhereRaw('pass=cast(sha256(?) as text)',[password])
     }
 
     register(data: UserModel) {

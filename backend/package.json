@@ -11,10 +11,18 @@
 		"start": "node build/app.js",
 		"build": "tsc",
 		"dev": "tsc && IS_DEV=true node build/app.js",
-		"heroku-prebuild": "npm i -g typescript"
+		"heroku-prebuild": "npm i -g typescript",
+		"test": "jest"
 	},
 	"devDependencies": {
-		"eslint": "^4.16.0"
+		"@types/jest": "^25.1.4",
+		"@types/mock-knex": "^0.4.2",
+		"@types/supertest": "^2.0.8",
+		"eslint": "^4.16.0",
+		"jest": "^25.2.3",
+		"mock-knex": "^0.4.7",
+		"supertest": "^4.0.2",
+		"typescript": "^3.8.3"
 	},
 	"dependencies": {
 		"@types/dotenv": "^6.1.1",
@@ -40,6 +48,7 @@
 		"restify-cors-middleware": "^1.1.1",
 		"restify-jwt-community": "^1.0.14",
 		"restify-router": "^0.5.0",
+		"ts-jest": "^25.2.1",
 		"typed-graphqlify": "^2.2.3"
 	},
 	"globalDependencies": {

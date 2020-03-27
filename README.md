@@ -1,4 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+
+
+
+# Backend Apps (Node-typescript)
+
+## About
+
+This App is build for server REST API for this project by using Node with MVC Pattern. <br />
+It use knexjs for getting data from database and postgres for DB.
+
+
+## Directory
+
+`<rootDir>/backend`
+
+
+## Available Scripts
+
+In the project directory, you can run:
+
+
+## `tsc && node build/app (Linux, MacOs) or tsc; node build/app (Windows)`
+
+Runs the Node server in the development mode.<br />
+Open [http://localhost:8080](http://localhost:8080) as base URL for Rest API.
+
+## `npm run test`
+
+Launches the jest test runner for testing this server
+
+## `npm run test`
+
+
+
+
+# FrontEnd Apps (React-Redux)
+
+
+## About
+
+This App is build for frontend web for this project by using React and Flux pattern with Redux. <br />
+for AJAX call, it use axios to get data from REST API server.
+
+## Directory
+
+`<rootDir>/web-frontend`
 
 ## Available Scripts
 

@@ -6,7 +6,6 @@ import style from './Message.module.scss';
 const Message = () => {
 
     const navigate = useNavigate();
-    const {register, handleSubmit,  errors, watch } = useForm()
 
   
     return (
@@ -15,9 +14,9 @@ const Message = () => {
             <div className="col-6 row mb-3">
                 <div className="col-12 d-inline-flex px-0">
                     <div className="col-1 text-right">
-                        <div><span class="iconify" data-icon="dashicons:arrow-up-alt" data-inline="false"></span></div>
+                        <div><span className="iconify" data-icon="dashicons:arrow-up-alt" data-inline="false"></span></div>
                         <div>10</div>
-                        <div><span class="iconify" data-icon="dashicons:arrow-down-alt" data-inline="false"></span></div>
+                        <div><span className="iconify" data-icon="dashicons:arrow-down-alt" data-inline="false"></span></div>
                     </div>
                     <div className={`col-11 ${style['border-black']} ${style['background-white']}`}>
                         
@@ -37,9 +36,9 @@ const Message = () => {
 
                 <div className="col-12 d-inline-flex px-0">
                     <div className="col-1 text-right">
-                        <div><span class="iconify" data-icon="dashicons:arrow-up-alt" data-inline="false"></span></div>
+                        <div><span className="iconify" data-icon="dashicons:arrow-up-alt" data-inline="false"></span></div>
                         <div>10</div>
-                        <div><span class="iconify" data-icon="dashicons:arrow-down-alt" data-inline="false"></span></div>
+                        <div><span className="iconify" data-icon="dashicons:arrow-down-alt" data-inline="false"></span></div>
                     </div>
                     <div className={`col-11 ${style['border-black']} ${style['background-white']}`}>
                         

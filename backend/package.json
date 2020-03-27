@@ -23,7 +23,6 @@
 		"@types/mysql": "^2.15.7",
 		"@types/restify": "^7.2.12",
 		"@types/restify-cors-middleware": "^1.0.1",
-		"@types/sequelize": "^4.28.4",
 		"apollo-server-restify": "^1.3.6",
 		"bunyan": "^1.8.12",
 		"dotenv": "^8.0.0",
@@ -34,13 +33,13 @@
 		"knex": "^0.19.1",
 		"mysql": "^2.17.1",
 		"mysql2": "^1.6.5",
-		"npm": "^6.11.2",
+		"npm": "^6.14.4",
+		"pg": "^7.18.2",
 		"restify": "^6.4.0",
 		"restify-api-validation": "^1.4.9",
 		"restify-cors-middleware": "^1.1.1",
 		"restify-jwt-community": "^1.0.14",
 		"restify-router": "^0.5.0",
-		"sequelize": "^5.12.3",
 		"typed-graphqlify": "^2.2.3"
 	},
 	"globalDependencies": {

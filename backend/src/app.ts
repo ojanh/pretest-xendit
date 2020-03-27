@@ -1,16 +1,13 @@
-import { LoginRouter } from './routes/login-router';
-import { AuthController } from './controller/auth-controller';
 import {createServer, plugins} from 'restify';
 import { Router } from 'restify-router';
-import {getDB} from './config';
-import { ReferalCodeRouter } from './routes/referalcode-router';
 import  * as config from "./config";
 import corsRestify from 'restify-cors-middleware';
 import {graphiqlRestify, graphqlRestify} from 'apollo-server-restify';
-import { DBGraphqlSchema } from './graphql/base.graphql';
+import { UserController } from "./controller/user.controller";
+import UserRepository from "./repository/user.repository";
+import homeRouter from "./routes/home.router";
 
 
-const router = new Router();
 const server = createServer({
 	name: 'api',
 	version: '1.0.0'
@@ -21,14 +18,6 @@ const corsMiddleWare = corsRestify({
 	allowHeaders: ['API-Token', 'Authorization'],
 	exposeHeaders: ['API-Token-Expiry']
 })
-
-//Controller Module
-const db = getDB()
-const authController = new AuthController(db, config.secretToken||'')
-
-//Router Module
-const referalCodeRouter = new ReferalCodeRouter(db, authController)
-const userRouter = new LoginRouter(db, authController)
 
 //Server
 server.pre(corsMiddleWare.preflight)
@@ -43,26 +32,12 @@ server.use(plugins.acceptParser(server.acceptable));
 server.use(plugins.queryParser());
 server.use(plugins.gzipResponse());
 
-if (process.env.IS_DEV){
-	server.get('/graphql', graphqlRestify({schema: DBGraphqlSchema}))
-	server.post('/graphql',graphqlRestify({schema: DBGraphqlSchema}))
-	server.get('/graphqlide', graphiqlRestify({endpointURL: '/graphql'}))
-}
-
-//test DB
-db.connect(err=>{
-    if (err) {
-        console.log('Database error: '+err);
-        server.close()
-    }
-});
 
 //Router 
-router.get('/', (req,res,next)=>{
-	res.send(200, 'Hello')
-});
-router.add('/referalcode', referalCodeRouter.router);
-router.add('/login', userRouter.router)
+
+const router = new Router();
+
+router.add('/', homeRouter());
 router.applyRoutes(server);
 
 server.on('uncaughtException', (req, res, route, err) => {
@@ -79,6 +54,7 @@ server.on('restifyError', (req, res, err, next)=>{
 	}
 	res.send({'message':'ERROR', 'result':err.message})
 })
+
 server.listen(process.env.PORT||8080,()=> {
 	console.log('Server is listening');
 	

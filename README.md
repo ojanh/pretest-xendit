@@ -19,18 +19,15 @@ It use knexjs for getting data from database and postgres for DB.
 In the project directory, you can run:
 
 
-## `tsc && node build/app (Linux, MacOs) or tsc; node build/app (Windows)`
+### `tsc && node build/app (Linux, MacOs)
+### tsc; node build/app (Windows)`
 
 Runs the Node server in the development mode.<br />
 Open [http://localhost:8080](http://localhost:8080) as base URL for Rest API.
 
-## `npm run test`
+### `npm run test`
 
 Launches the jest test runner for testing this server
-
-## `npm run test`
-
-
 
 
 # FrontEnd Apps (React-Redux)

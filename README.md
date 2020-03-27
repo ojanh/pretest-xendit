@@ -6,8 +6,8 @@
 ## About
 
 This App is build for server REST API for this project by using Node with MVC Pattern. <br />
-It use knexjs for getting data from database and postgres for DB.
-
+It use knexjs for getting data from database and postgres for DB. for DB I used in localhost (My computer) for now because of not have a server hosting for DB. <br />
+Here's ER Diagram for it's DB: <https://i.imgur.com/LuD8ArS.jpg>
 
 ## Directory
 
